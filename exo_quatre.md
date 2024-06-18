@@ -184,10 +184,21 @@ SELECT anime.titre, note FROM anime WHERE note> 8 ORDER BY note DESC LIMIT 5;
 
 -   Affichez les utilisateurs et le nombre d'animes dans leurs listes de lecture, triés par nombre d'animes décroissant.
 
-SELECT nom_utilisateur, COUNT() FROM liste_de_lecture 
+SELECT nom_utilisateur, progression FROM liste_de_lecture INNER JOIN utilisateurs ON utilisateurs.id_utilisateur=liste_de_lecture.id_utilisateur  ORDER BY progression (COUNT(*)) DESC ;
+
 -   Affichez les 3 épisodes les plus longs avec le nom de l'anime et la durée de l'épisode.
+
+SELECT anime.titre AS titre_anime,duree FROM ep INNER JOIN anime ON anime.id_anime=ep.id_anime ORDER BY duree DESC LIMIT 3;
+
 -   Affichez les utilisateurs ayant laissé au moins 5 commentaires, triés par nombre de commentaires décroissant.
+
+SELECT nom_utilisateur AS noms, COUNT(*) FROM commentaires INNER JOIN utilisateurs ON utilisateurs.id_utilisateur=commentaires.id_utilisateur GROUP BY commentaires.id_utilisateur HAVING COUNT(*)>5 ORDER BY COUNT(*) DESC;
+
+SELECT * FROM commentaires INNER JOIN utilisateurs ON utilisateurs.id_utilisateur=commentaires.id_utilisateur;
+
 -   Affichez les animes et leur nombre total d'épisodes diffusés après 2020, triés par nombre d'épisodes décroissant.
+
+SELECT titre, COUNT(*) AS anime FROM ep INNER JOIN anime ON anime.id_anime=ep.id_anime WHERE date_sortie > '2000-01-01' GROUP BY ep.id_anime  ORDER BY COUNT(*) DESC;
 
 ## Exercice
 
