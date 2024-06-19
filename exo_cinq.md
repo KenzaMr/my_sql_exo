@@ -174,7 +174,7 @@ SELECT artist.nom,COUNT(*) FROM artist INNER JOIN album ON artist.id= album.arti
 
 7. Affichez les chansons dont la durée est supérieure à 300 secondes, triées par durée décroissante.
 
-SELECT titre,duree FROM song WHERE duree> 300 ORDER BY titre DESC;
+SELECT titre,duree FROM song WHERE duree> 300 ORDER BY duree DESC;
 
 8. Affichez les albums sortis après l'année 2000, triés par année de sortie.
 
